@@ -10,8 +10,8 @@ def to_string(value):
 
 def generate_diff(args):
     paths = get_paths(args)
-    file1 = json.load(open(paths[0]))
-    file2 = json.load(open(paths[1]))
+    file1 = json.load(open(paths['first_file']))
+    file2 = json.load(open(paths['second_file']))
     keys = sorted(file1.keys() | file2.keys())
     result = []
     for key in keys:
