@@ -1,7 +1,6 @@
 from gendiff.genereting_difference import generate_diff
 from pathlib import Path
-import yaml
-import os
+
 
 
 FIXTURES_DIR = f'{Path(__file__).parent}/fixtures'

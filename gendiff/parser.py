@@ -1,4 +1,6 @@
-import json, os, yaml
+import json
+import yaml
+import os
 
 
 def parse(data):
