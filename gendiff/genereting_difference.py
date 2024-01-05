@@ -9,6 +9,7 @@ def to_string(value):
 
 def get_file_data(file_path):
     with open(file_path) as file:
+
         return parse(file)
 
 

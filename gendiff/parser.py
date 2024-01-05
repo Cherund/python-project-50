@@ -1,5 +1,9 @@
-import json
+import json, os, yaml
 
 
 def parse(data):
-    return json.load(data)
+    extension = os.path.splitext(data.name)[1]
+    if extension == '.json':
+        return json.load(data)
+    else:
+        return yaml.safe_load(data)
