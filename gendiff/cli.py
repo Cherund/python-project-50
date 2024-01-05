@@ -1,5 +1,13 @@
-def get_paths(args):
-    if isinstance(args, list):
-        return {'first_file': args[0], 'second_file': args[1]}
+import argparse
 
-    return {'first_file': args.first_file, 'second_file': args.second_file}
+
+def get_args():
+    parser = argparse.ArgumentParser(
+        prog='gendiff',
+        description='Compares two configuration files and shows a difference.',
+    )
+    parser.add_argument('first_file')
+    parser.add_argument('second_file')
+    parser.add_argument('-f', '--format',
+                        help='set format of output')
+    return parser.parse_args()

@@ -1,5 +1,4 @@
-from gendiff.cli import get_paths
-import json
+from gendiff.parser import parse
 
 
 def to_string(value):
@@ -8,10 +7,14 @@ def to_string(value):
     return value
 
 
-def generate_diff(args):
-    paths = get_paths(args)
-    file1 = json.load(open(paths['first_file']))
-    file2 = json.load(open(paths['second_file']))
+def get_file_data(file_path):
+    with open(file_path) as file:
+        return parse(file)
+
+
+def generate_diff(file1_path, file2_path):
+    file1 = get_file_data(file1_path)
+    file2 = get_file_data(file2_path)
     keys = sorted(file1.keys() | file2.keys())
     result = []
     for key in keys:
