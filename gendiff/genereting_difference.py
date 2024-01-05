@@ -1,4 +1,5 @@
 from gendiff.parser import parse
+import os
 
 
 def to_string(value):
@@ -8,9 +9,9 @@ def to_string(value):
 
 
 def get_file_data(file_path):
+    extension = os.path.splitext(file_path)[1]
     with open(file_path) as file:
-
-        return parse(file)
+        return parse(file, extension)
 
 
 def generate_diff(file1_path, file2_path):

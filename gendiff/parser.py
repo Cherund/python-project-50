@@ -1,10 +1,8 @@
 import json
 import yaml
-import os
 
 
-def parse(data):
-    extension = os.path.splitext(data.name)[1]
+def parse(data, extension):
     if extension == '.json':
         return json.load(data)
     else:
