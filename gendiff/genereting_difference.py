@@ -15,6 +15,7 @@ def get_file_data(file_path):
     with open(file_path) as file:
         return parse(file, extension)
 
+
 def format_to_string(dic, indent=4):
     result = []
     for key, value in dic.items():
@@ -31,8 +32,6 @@ def format_to_string(dic, indent=4):
     return f'{{\n{result_string}\n{" " * (indent-4)}}}'
 
 
-
-
 # def comparing(file1, file2, indent=2):
 #     keys = sorted(file1.keys() | file2.keys())
 #     result = []
@@ -46,7 +45,8 @@ def format_to_string(dic, indent=4):
 #             result.append(f'{indentation}  {key}: {to_string(file1[key])}')
 #         elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
 #             result.append(
-#                 f'{indentation}  {key}: {comparing(file1[key], file2[key], indent+4)}')
+#                 f'{indentation}  {key}: {comparing(file1[key],
+#                 file2[key], indent+4)}')
 #         else:
 #             result.extend([f'{indentation}- {key}: {to_string(file1[key])}',
 #                            f'{indentation}+ {key}: {to_string(file2[key])}'])
@@ -65,11 +65,11 @@ def comparing(file1, file2):
         elif key not in file1:
             result[f'+ {key}'] = to_string(file2[key])
         elif file1[key] == file2[key]:
-            result[f'{key}'] =  to_string(file1[key])
+            result[f'{key}'] = to_string(file1[key])
         elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
             result[f'{key}'] = comparing(file1[key], file2[key])
         else:
-            result[f'- {key}'] =  to_string(file1[key])
+            result[f'- {key}'] = to_string(file1[key])
             result[f'+ {key}'] = to_string(file2[key])
     # result_string = '\n'.join(result)
     # return f'{{\n{result_string}\n}}'
