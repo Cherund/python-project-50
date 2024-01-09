@@ -31,6 +31,7 @@ def get_file_data(file_path):
 #     result_string = '\n'.join(result)
 #     return f'{{\n{result_string}\n{" " * (indent-4)}}}'
 
+
 # def comparing(file1, file2):
 #     keys = sorted(file1.keys() | file2.keys())
 #     result = {}
@@ -49,29 +50,36 @@ def get_file_data(file_path):
 #     return result
 
 
-def stylish(dic, indent=4):
+def check_for_dict(value, indent):
+    if isinstance(value, dict):
+        return stylish(value, indent + 4)
+    return value
+
+
+def stylish(dic, indent=2):
     result = []
     for key, value in dic.items():
 
-        if isinstance(value, dict):
-            append_list = [f'{" " * indent}{key}: {stylish(value, indent + 4)}']
 
-        elif isinstance(value, list):
-            # if isinstance(value[], list)
-            append_list = [f'{" " * (indent-2)}- {key}: {value[0]}',
-                            f'{" " * (indent-2)}+ {key}: {value[1]}']
-
-        elif isinstance(value, tuple):
-            append_list = [f'{" " * (indent-2)}{value[0]}{key}: {value[1]}']
-
+        if value['type'] == 'deleted':
+            result.append(f'{" " * (indent)}- {key}: {value["value"]}')
+        elif value['type'] == 'added':
+            result.append(f'{" " * (indent)}+ {key}: {value["value"]}')
+        elif value['type'] == 'updated':
+            result.append(f'{" " * (indent)}- {key}: {value["value1"]}')
+            result.append(f'{" " * (indent)}+ {key}: {value["value2"]}')
+        elif value['type'] == 'unchanged':
+            result.append(f'{" " * indent}  {key}: {value["value"]}')
         else:
-            append_list = [f'{" " * indent}{key}: {value}']
+            result.append(f'{" " * indent}  {key}: {stylish(value["value"], indent+4)}')
 
-
-        result.extend(append_list)
 
     result_string = '\n'.join(result)
-    return f'{{\n{result_string}\n{" " * (indent-4)}}}'
+    return f'{{\n{result_string}\n{" " * (indent-2)}}}'
+
+
+    result_string = '\n'.join(result)
+    return f'{{\n{result_string}\n{" " * (indent-2)}}}'
 
 
 def comparing(file1, file2):
@@ -79,16 +87,16 @@ def comparing(file1, file2):
     result = {}
     for key in keys:
         if key not in file2:
-            result[key] = ('- ', to_string(file1[key]))
+            result[key]= {'type': 'deleted', 'value': to_string(file1[key])}
         elif key not in file1:
-            result[key] = ('+ ', to_string(file2[key]))
+            result[key]= {'type': 'added', 'value': to_string(file2[key])}
         elif file1[key] == file2[key]:
-            result[key] = to_string(file1[key])
+            result[key] = {'type': 'unchanged','value': to_string(file1[key])}
         elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
-            result[key] = comparing(file1[key], file2[key])
+            result[key] = {'type':'dictionary','value': comparing(file1[key], file2[key])}
         else:
-            result[key] = [to_string(file1[key]),  to_string(file2[key])]
-
+            result[key] = {'type': 'updated', 'value1': to_string(file1[key]),
+                           'value2': to_string(file2[key])}
     return result
 
 
