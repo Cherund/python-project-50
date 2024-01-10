@@ -14,18 +14,20 @@ def formatted_dict(dic, style):
         return plain(dic)
     return stylish(dic)
 
+
 def comparing(file1, file2):
     keys = sorted(file1.keys() | file2.keys())
     result = {}
     for key in keys:
         if key not in file2:
-            result[key]= {'type': 'removed', 'value': file1[key]}
+            result[key] = {'type': 'removed', 'value': file1[key]}
         elif key not in file1:
-            result[key]= {'type': 'added', 'value': file2[key]}
+            result[key] = {'type': 'added', 'value': file2[key]}
         elif file1[key] == file2[key]:
-            result[key] = {'type': 'unchanged','value': file1[key]}
+            result[key] = {'type': 'unchanged', 'value': file1[key]}
         elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
-            result[key] = {'type':'dictionary','value': comparing(file1[key], file2[key])}
+            result[key] = {'type': 'dictionary',
+                           'value': comparing(file1[key], file2[key])}
         else:
             result[key] = {'type': 'updated', 'value1': file1[key],
                            'value2': file2[key]}

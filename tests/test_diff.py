@@ -68,3 +68,34 @@ def test_nested_yaml_diff_plain():
     with open(f'{FIXTURES_DIR}/plain_tree_result') as output:
         assert generate_diff(file1_path, file2_path, 'plain') == output.read()
 
+
+def test_flat_json_diff_jdumps():
+    file1_path = f'{FIXTURES_DIR}/file1.json'
+    file2_path = f'{FIXTURES_DIR}/file2.json'
+
+#     with open(f'{FIXTURES_DIR}/result') as output:
+#         assert generate_diff(file1_path, file2_path) == output.read()
+#
+#
+# def test_flat_yml_diff_jdumps():
+#     file1_path = f'{FIXTURES_DIR}/file1.yml'
+#     file2_path = f'{FIXTURES_DIR}/file2.yml'
+#
+#     with open(f'{FIXTURES_DIR}/result') as output:
+#         assert generate_diff(file1_path, file2_path) == output.read()
+#
+#
+# def test_nested_json_diff_jdumps():
+#     file1_path = f'{FIXTURES_DIR}/tree_file1.json'
+#     file2_path = f'{FIXTURES_DIR}/tree_file2.json'
+#
+#     with open(f'{FIXTURES_DIR}/tree_result') as output:
+#         assert generate_diff(file1_path, file2_path) == output.read()
+# #
+#
+# def test_nested_yaml_diff_jdumps():
+#     file1_path = f'{FIXTURES_DIR}/tree_file1.yml'
+#     file2_path = f'{FIXTURES_DIR}/tree_file2.yml'
+#
+#     with open(f'{FIXTURES_DIR}/tree_result') as output:
+#         assert generate_diff(file1_path, file2_path) == output.read()
