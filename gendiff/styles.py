@@ -57,7 +57,7 @@ def plain(dic, path=[]):
     result = []
     for key, value in dic.items():
         if 'type' in value:
-            print_path = '.'.join(path+[key])
+            print_path = '.'.join(path + [key])
             if value['type'] == 'removed':
                 result.append(f"Property '{print_path}' was removed")
             elif value['type'] == 'added':
@@ -71,7 +71,7 @@ def plain(dic, path=[]):
                 if key == 'value':
                     appending_value = plain(value, path)
                 else:
-                    appending_value = plain(value, path+[key])
+                    appending_value = plain(value, path + [key])
 
                 if appending_value:
                     result.append(appending_value)

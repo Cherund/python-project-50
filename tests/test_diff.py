@@ -27,7 +27,7 @@ def test_nested_json_diff():
 
     with open(f'{FIXTURES_DIR}/nested_result') as output:
         assert generate_diff(file1_path, file2_path) == output.read()
-#
+
 
 def test_nested_yaml_diff():
     file1_path = f'{FIXTURES_DIR}/nested_file1.yml'
