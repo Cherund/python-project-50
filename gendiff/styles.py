@@ -67,11 +67,19 @@ def plain(dic, path=[]):
                 result.append(f"Property '{print_path}' was updated. "
                               f"From {checking_value(value['value1'])} "
                               f"to {checking_value(value['value2'])}")
-            elif plain(value):
-                result.append(plain(value, path+[key]))
+            else:
+                if key == 'value':
+                    appending_value = plain(value, path)
+                else:
+                    appending_value = plain(value, path+[key])
 
-        elif isinstance(value, dict) and plain(value):
-            result.append(plain(value, path))
+                if appending_value:
+                    result.append(appending_value)
+
+        elif isinstance(value, dict):
+            appending_value = plain(value, path)
+            if appending_value:
+                result.append(plain(value, path))
 
     result_string = '\n'.join(result)
     return result_string
