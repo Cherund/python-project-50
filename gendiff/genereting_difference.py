@@ -1,5 +1,5 @@
 from gendiff.parser import parse
-from gendiff.styles import plain, stylish
+from gendiff.styles import plain, stylish, json_dumps
 import os
 
 
@@ -12,6 +12,10 @@ def get_file_data(file_path):
 def formatted_dict(dic, style):
     if style == 'plain':
         return plain(dic)
+
+    if style == 'json':
+        return json_dumps(dic)
+
     return stylish(dic)
 
 

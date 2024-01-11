@@ -1,3 +1,6 @@
+import json
+
+
 def to_string(value, indent=2):
     if isinstance(value, bool):
         return str(value).lower()
@@ -72,3 +75,7 @@ def plain(dic, path=[]):
 
     result_string = '\n'.join(result)
     return result_string
+
+
+def json_dumps(dic):
+    return json.dumps(dic, indent=4)
