@@ -1,4 +1,4 @@
-from gendiff.genereting_difference import generate_diff
+from gendiff.generating_difference import generate_diff
 from pathlib import Path
 
 
