@@ -3,7 +3,9 @@ import yaml
 
 
 def parse(data, extension):
-    if extension == '.json':
+    if extension == 'json':
         return json.load(data)
-    else:
+    if extension == 'yml':
         return yaml.safe_load(data)
+
+    ValueError(f'Unsupported extension: {extension}')
