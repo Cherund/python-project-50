@@ -9,7 +9,9 @@ def create_difference_tree(data1, data2):
 
         elif isinstance(data1[key], dict) and isinstance(data2[key], dict):
             result[key] = {'type': 'dictionary',
-                           'value': create_difference_tree(data1[key], data2[key])}
+                           'value': create_difference_tree(data1[key],
+                                                           data2[key])
+                           }
         elif data1[key] != data2[key]:
             result[key] = {'type': 'updated', 'value1': data1[key],
                            'value2': data2[key]}
