@@ -3,11 +3,14 @@ from gendiff.styles.plain_style import to_plain
 from gendiff.styles.json_style import to_json
 
 
-def style_dict(dic, style):
+def style_dict(data, style):
     if style == 'plain':
-        return to_plain(dic)
+        return to_plain(data)
 
     if style == 'json':
-        return to_json(dic)
+        return to_json(data)
 
-    return to_stylish(dic)
+    if style == 'stylish':
+        return to_stylish(data)
+
+    raise ValueError(f'Unknown style: {style}')

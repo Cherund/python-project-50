@@ -1,5 +1,5 @@
 import json
 
 
-def to_json(dic):
-    return json.dumps(dic, indent=4)
+def to_json(data):
+    return json.dumps(data, indent=4)

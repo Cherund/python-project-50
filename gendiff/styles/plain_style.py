@@ -9,9 +9,9 @@ def checking_value(value):
     return f"'{value}'"
 
 
-def to_plain(dic, path=[]):
+def to_plain(data, path=[]):
     result = []
-    for key, value in dic.items():
+    for key, value in data.items():
         if 'type' in value:
             print_path = '.'.join(path + [key])
             if value['type'] == 'removed':
