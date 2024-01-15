@@ -7,10 +7,11 @@ def style_dict(data, style):
     if style == 'plain':
         return to_plain(data)
 
-    if style == 'json':
+    elif style == 'json':
         return to_json(data)
 
-    if style == 'stylish':
+    elif style == 'stylish':
         return to_stylish(data)
 
-    raise ValueError(f'Unknown style: {style}')
+    else:
+        raise ValueError(f'Unknown style: {style}')
