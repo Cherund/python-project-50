@@ -25,5 +25,3 @@ def test_nested_yaml_diff():
 
     with open(f'{FIXTURES_DIR}/result_plain') as output:
         assert generate_diff(file1_path, file2_path, 'plain') == output.read()
-
-
