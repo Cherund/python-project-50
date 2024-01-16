@@ -31,23 +31,6 @@ def to_plain(data):
                 case _:
                     raise ValueError(f'Unknown type: {value["type"]}')
 
-            #
-            # if value['type'] == 'removed':
-            #     result.append(f"Property '{print_path}' was removed")
-            # elif value['type'] == 'added':
-            #     result.append(f"Property '{print_path}' was added with "
-            #                   f"value: {checking_value(value['value'])}")
-            # elif value['type'] == 'updated':
-            #     result.append(f"Property '{print_path}' was updated. "
-            #                   f"From {checking_value(value['value1'])} "
-            #                   f"to {checking_value(value['value2'])}")
-            # elif value['type'] == 'dictionary':
-            #     result.extend(_iter_plain(value['value'], print_path))
-            # elif value['type'] == 'unchanged':
-            #     continue
-            # else:
-            #     raise ValueError(f'Unknown type: {value["type"]}')
-
         return result
 
     result_string = '\n'.join(_iter_plain(data))
