@@ -4,4 +4,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5e796ed120db98e38c50/maintainability)](https://codeclimate.com/github/Cherund/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5e796ed120db98e38c50/test_coverage)](https://codeclimate.com/github/Cherund/python-project-50/test_coverage)
 
-Asciinema обработки json и yaml фалов
+[![asciicast](https://asciinema.org/a/631627.svg)](https://asciinema.org/a/631627)
