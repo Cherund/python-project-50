@@ -61,11 +61,11 @@ def test_nested_yaml_diff():
         assert generate_diff(file1_path, file2_path, 'json') == output.read()
 
 
-def test_nest():
-    file1_path = f'{FIXTURES_DIR}/nested_file1.json'
-    file2_path = f'{FIXTURES_DIR}/nested_file2.json'
-
-    print(generate_diff(file1_path, file2_path))
-
-
-test_nest()
+# def test_nest():
+#     file1_path = f'{FIXTURES_DIR}/nested_file1.json'
+#     file2_path = f'{FIXTURES_DIR}/nested_file2.json'
+#
+#     print(generate_diff(file1_path, file2_path))
+#
+#
+# test_nest()
