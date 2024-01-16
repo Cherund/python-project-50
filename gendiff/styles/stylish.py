@@ -12,7 +12,7 @@ def to_string(value, indent=2):
         for key, val in value.items():
             lines.append(f'{build_indent(indent)}  '
                          f'{key}: {to_string(val, indent + 4)}\n')
-        return f'{{\n{"".join(lines)}{" " * (indent-2)}}}'
+        return f'{{\n{"".join(lines)}{build_indent(indent-2)}}}'
     return value
 
 
@@ -40,4 +40,4 @@ def to_stylish(data, indent=2):
             raise ValueError(f'Unknown type: {value["type"]}')
 
     result_string = '\n'.join(result)
-    return f'{{\n{result_string}\n{" " * (indent-2)}}}'
+    return f'{{\n{result_string}\n{build_indent(indent-2)}}}'
