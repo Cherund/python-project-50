@@ -10,7 +10,7 @@ def style_dict(data, style):
     elif style == 'json':
         return to_json(data)
 
-    elif style == 'stylish' or style is None:
+    elif style == 'stylish':
         return to_stylish(data)
 
     else:
