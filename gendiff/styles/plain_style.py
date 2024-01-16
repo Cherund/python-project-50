@@ -9,11 +9,11 @@ def checking_value(value):
     return f"'{value}'"
 
 
-def to_plain(data, path=[]):
+def to_plain(data, path=''):
     result = []
     for key, value in data.items():
         if 'type' in value:
-            print_path = '.'.join(path + [key])
+            print_path = f"{path}.{key}" if path else f'{key}'
             if value['type'] == 'removed':
                 result.append(f"Property '{print_path}' was removed")
             elif value['type'] == 'added':
@@ -27,7 +27,7 @@ def to_plain(data, path=[]):
                 if key == 'value':
                     appending_value = to_plain(value, path)
                 else:
-                    appending_value = to_plain(value, path + [key])
+                    appending_value = to_plain(value, print_path)
 
                 if appending_value:
                     result.append(appending_value)
