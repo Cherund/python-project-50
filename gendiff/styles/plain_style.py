@@ -22,9 +22,9 @@ def to_plain(data):
                                   f"value: {checking_value(value['value'])}")
                 case 'updated':
                     result.append(f"Property '{print_path}' was updated. "
-                                  f"From {checking_value(value['value1'])} "
-                                  f"to {checking_value(value['value2'])}")
-                case 'dictionary':
+                                  f"From {checking_value(value['old_value'])} "
+                                  f"to {checking_value(value['new_value'])}")
+                case 'nested':
                     result.extend(_iter_plain(value['value'], print_path))
                 case 'unchanged':
                     continue

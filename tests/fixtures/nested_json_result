@@ -1,6 +1,6 @@
 {
     "common": {
-        "type": "dictionary",
+        "type": "nested",
         "value": {
             "follow": {
                 "type": "added",
@@ -16,8 +16,8 @@
             },
             "setting3": {
                 "type": "updated",
-                "value1": true,
-                "value2": null
+                "old_value": true,
+                "new_value": null
             },
             "setting4": {
                 "type": "added",
@@ -30,15 +30,15 @@
                 }
             },
             "setting6": {
-                "type": "dictionary",
+                "type": "nested",
                 "value": {
                     "doge": {
-                        "type": "dictionary",
+                        "type": "nested",
                         "value": {
                             "wow": {
                                 "type": "updated",
-                                "value1": "",
-                                "value2": "so much"
+                                "old_value": "",
+                                "new_value": "so much"
                             }
                         }
                     },
@@ -55,12 +55,12 @@
         }
     },
     "group1": {
-        "type": "dictionary",
+        "type": "nested",
         "value": {
             "baz": {
                 "type": "updated",
-                "value1": "bas",
-                "value2": "bars"
+                "old_value": "bas",
+                "new_value": "bars"
             },
             "foo": {
                 "type": "unchanged",
@@ -68,10 +68,10 @@
             },
             "nest": {
                 "type": "updated",
-                "value1": {
+                "old_value": {
                     "key": "value"
                 },
-                "value2": "str"
+                "new_value": "str"
             }
         }
     },

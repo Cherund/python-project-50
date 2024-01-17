@@ -28,13 +28,13 @@ def to_stylish(data, indent=2):
                               f'{to_string(value["value"], indent + 4)}')
             case 'updated':
                 result.append(f'{build_indent(indent)}- {key}: '
-                              f'{to_string(value["value1"], indent + 4)}')
+                              f'{to_string(value["old_value"], indent + 4)}')
                 result.append(f'{build_indent(indent)}+ {key}: '
-                              f'{to_string(value["value2"], indent + 4)}')
+                              f'{to_string(value["new_value"], indent + 4)}')
             case 'unchanged':
                 result.append(f'{build_indent(indent)}  {key}: '
                               f'{to_string(value["value"], indent + 4)}')
-            case 'dictionary':
+            case 'nested':
                 result.append(f'{build_indent(indent)}  {key}: '
                               f'{to_stylish(value["value"], indent + 4)}')
             case _:

@@ -22,13 +22,14 @@ def test_flat_diff(file1, file2):
     file1_path = f'{FIXTURES_DIR}/{file1}'
     file2_path = f'{FIXTURES_DIR}/{file2}'
 
-    assert generate_diff(file1_path, file2_path) == get_result_data('flat_result')
+    assert (generate_diff(file1_path, file2_path)
+            == get_result_data('flat_result'))
 
-    with open(f'{FIXTURES_DIR}/flat_plain_result') as output:
-        assert generate_diff(file1_path, file2_path, 'plain') == output.read()
+    assert (generate_diff(file1_path, file2_path, 'plain')
+            == get_result_data('flat_plain_result'))
 
-    with open(f'{FIXTURES_DIR}/flat_json_result') as output:
-        assert generate_diff(file1_path, file2_path, 'json') == output.read()
+    assert (generate_diff(file1_path, file2_path, 'json')
+            == get_result_data('flat_json_result'))
 
 
 @pytest.mark.parametrize(
@@ -42,11 +43,11 @@ def test_nested_json_diff(file1, file2):
     file1_path = f'{FIXTURES_DIR}/{file1}'
     file2_path = f'{FIXTURES_DIR}/{file2}'
 
-    with open(f'{FIXTURES_DIR}/nested_result') as output:
-        assert generate_diff(file1_path, file2_path) == output.read()
+    assert (generate_diff(file1_path, file2_path)
+            == get_result_data('nested_result'))
 
-    with open(f'{FIXTURES_DIR}/nested_plain_result') as output:
-        assert generate_diff(file1_path, file2_path, 'plain') == output.read()
+    assert (generate_diff(file1_path, file2_path, 'plain')
+            == get_result_data('nested_plain_result'))
 
-    with open(f'{FIXTURES_DIR}/nested_json_result') as output:
-        assert generate_diff(file1_path, file2_path, 'json') == output.read()
+    assert (generate_diff(file1_path, file2_path, 'json')
+            == get_result_data('nested_json_result'))

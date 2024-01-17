@@ -1,4 +1,4 @@
-from gendiff.styles.get_style import style_dict
+from gendiff.styles import format_diff
 from gendiff.create_tree import create_difference_tree
 from gendiff.parser import parse
 import os
@@ -15,8 +15,8 @@ def get_file_data(file_path):
 
 
 def generate_diff(file1_path, file2_path, style='stylish'):
-    file1 = get_file_data(file1_path)
-    file2 = get_file_data(file2_path)
-    compared_dict = create_difference_tree(file1, file2)
-    stringed_dict = style_dict(compared_dict, style)
-    return stringed_dict
+    data1 = get_file_data(file1_path)
+    data2 = get_file_data(file2_path)
+    diff_tree = create_difference_tree(data1, data2)
+    formatted_diff = format_diff(diff_tree, style)
+    return formatted_diff

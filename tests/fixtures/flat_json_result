@@ -13,8 +13,8 @@
     },
     "timeout": {
         "type": "updated",
-        "value1": 50,
-        "value2": 20
+        "old_value": 50,
+        "new_value": 20
     },
     "verbose": {
         "type": "added",
