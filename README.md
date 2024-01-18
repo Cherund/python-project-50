@@ -10,8 +10,8 @@
 ## Description
 
 
-Difference generator is a program that determines the difference between two data structures.
-A program is able to work with the formats: ```json```, ```yaml```
+Difference generator is a program that determines difference between two data structures.
+Supported formats:  ```json```, ```yml``` and ```yaml```.
 
 
 ## Installation
@@ -29,14 +29,10 @@ make package-install
 ## Optional arguments
 
 1. **-h, --help**  `gendiff -h` - launch help
-2. **-f, --format** `gendiff -f` - set format of output. **Available formats:**
+2. **-f, --format** `gendiff -f` - set format of output. **Available styles:**
 * `-f stylish` - default format
 * `-f plain`
 * `-f json`
-
-gendiff tests/fixtures/file1.json tests/fixtures/file2.json
-
-gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
 
 
 ### Comparison of flat files (JSON)
