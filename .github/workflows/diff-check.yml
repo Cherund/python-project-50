@@ -1,4 +1,4 @@
-name: Checking gendiff
+name: Self written tests
 
 on:
   - push
