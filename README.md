@@ -59,13 +59,13 @@ make package-install
 
 [![asciicast](https://asciinema.org/a/631997.svg)](https://asciinema.org/a/631997)
 
-### Work example formatter PLAIN
+### Work example with PLain style
 
 `gendiff -f plain nested_file1.json nested_file2.json`
 
 [![asciicast](https://asciinema.org/a/631998.svg)](https://asciinema.org/a/631998)
 
-### Work example formatter JSON
+### Work example with Json style
 
 `gendiff -f json filepath1.json filepath2.json`
 
