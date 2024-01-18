@@ -16,6 +16,3 @@ def format_diff(data, style):
 
         case _:
             raise ValueError(f'Unknown style: {style}')
-
-
-# __all__ = (format_diff,)
