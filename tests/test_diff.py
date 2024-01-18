@@ -25,6 +25,9 @@ def test_flat_diff(file1, file2):
     assert (generate_diff(file1_path, file2_path)
             == get_result_data('flat_result'))
 
+    assert (generate_diff(file1_path, file2_path, 'stylish')
+            == get_result_data('flat_result'))
+
     assert (generate_diff(file1_path, file2_path, 'plain')
             == get_result_data('flat_plain_result'))
 
@@ -44,6 +47,9 @@ def test_nested_json_diff(file1, file2):
     file2_path = f'{FIXTURES_DIR}/{file2}'
 
     assert (generate_diff(file1_path, file2_path)
+            == get_result_data('nested_result'))
+
+    assert (generate_diff(file1_path, file2_path, 'stylish')
             == get_result_data('nested_result'))
 
     assert (generate_diff(file1_path, file2_path, 'plain')
