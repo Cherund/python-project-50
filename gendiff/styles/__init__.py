@@ -1,7 +1,7 @@
 from gendiff.styles.stylish import to_stylish
 from gendiff.styles.plain import to_plain
 from gendiff.styles.json import to_json
-from gendiff.styles.constants import FORMATS
+from gendiff.constants import FORMATS
 
 
 def format_diff(data, style):
