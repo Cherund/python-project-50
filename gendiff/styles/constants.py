@@ -9,4 +9,4 @@ _TYPE_VALUES = ('removed', 'added', 'nested', 'updated', 'unchanged')
 TYPES = namedtuple('FormatTypes',
                    map(str.upper, _TYPE_VALUES))(*_TYPE_VALUES)
 
-SPACES = '    '
+INDENT = '    '

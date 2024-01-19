@@ -1,8 +1,8 @@
-from gendiff.styles.constants import TYPES, SPACES
+from gendiff.styles.constants import TYPES, INDENT
 
 
 def build_indent(depth):
-    return SPACES[:-2] + SPACES * depth
+    return INDENT[:-2] + INDENT * depth
 
 
 def format_data(data, depth):
