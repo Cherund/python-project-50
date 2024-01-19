@@ -14,8 +14,8 @@ def get_result_data(file_name):
 @pytest.mark.parametrize(
     ('file1', 'file2'),
     [
-        ('file1.json', 'file2.json'),
-        ('file1.yml', 'file2.yml'),
+        ('flat_file1.json', 'flat_file2.json'),
+        ('flat_file1.yml', 'flat_file2.yml'),
     ]
 )
 def test_flat_diff(file1, file2):
