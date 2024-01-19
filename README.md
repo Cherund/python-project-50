@@ -25,15 +25,21 @@ make build
 make package-install
 ```
 
+## Usage
+```
+usage: gendiff [-h] [-f FORMAT] first_file second_file
 
-## Optional arguments
+Compares two configuration files and shows a difference.
 
-1. **-h, --help**  `gendiff -h` - launch help
-2. **-f, --format** `gendiff -f` - set format of output. **Available styles:**
-* `-f stylish` - default format
-* `-f plain`
-* `-f json`
+positional arguments:
+  first_file
+  second_file
 
+options:
+  -h, --help            show this help message and exit
+  -f FORMAT, --format FORMAT
+                         select format of output from [stylish, plain, json]
+```
 
 ### Comparison of flat files (JSON)
 
