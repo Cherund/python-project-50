@@ -1,8 +1,21 @@
-def build_indent(indent):
-    return " " * indent
+from gendiff.styles.constants import TYPES, SPACES
 
 
-def to_string(value, indent=2):
+def build_indent(depth):
+    return SPACES[:-2] + SPACES * depth
+
+
+def format_data(data, depth):
+    string_data = '\n'.join(data)
+    last_indent = build_indent(depth)[:-2]
+    return f'{string_data}\n{last_indent}'
+
+
+def create_braces(formatted_data):
+    return f'{{\n{formatted_data}}}'
+
+
+def to_string(value, depth):
     if isinstance(value, bool):
         return str(value).lower()
     if value is None:
@@ -10,35 +23,36 @@ def to_string(value, indent=2):
     if isinstance(value, dict):
         lines = []
         for key, val in value.items():
-            lines.append(f'{build_indent(indent)}  '
-                         f'{key}: {to_string(val, indent + 4)}\n')
-        return f'{{\n{"".join(lines)}{build_indent(indent - 2)}}}'
+            lines.append(f'{build_indent(depth)}  '
+                         f'{key}: {to_string(val, depth + 1)}')
+        lines_string = format_data(lines, depth)
+        return create_braces(lines_string)
     return value
 
 
-def to_stylish(data, indent=2):
+def to_stylish(data, depth=0):
     result = []
     for key, value in data.items():
         match value['type']:
-            case 'removed':
-                result.append(f'{build_indent(indent)}- {key}: '
-                              f'{to_string(value["value"], indent + 4)}')
-            case 'added':
-                result.append(f'{build_indent(indent)}+ {key}: '
-                              f'{to_string(value["value"], indent + 4)}')
-            case 'updated':
-                result.append(f'{build_indent(indent)}- {key}: '
-                              f'{to_string(value["old_value"], indent + 4)}')
-                result.append(f'{build_indent(indent)}+ {key}: '
-                              f'{to_string(value["new_value"], indent + 4)}')
-            case 'unchanged':
-                result.append(f'{build_indent(indent)}  {key}: '
-                              f'{to_string(value["value"], indent + 4)}')
-            case 'nested':
-                result.append(f'{build_indent(indent)}  {key}: '
-                              f'{to_stylish(value["value"], indent + 4)}')
+            case TYPES.REMOVED:
+                result.append(f'{build_indent(depth)}- {key}: '
+                              f'{to_string(value["value"], depth + 1)}')
+            case TYPES.ADDED:
+                result.append(f'{build_indent(depth)}+ {key}: '
+                              f'{to_string(value["value"], depth + 1)}')
+            case TYPES.UPDATED:
+                result.append(f'{build_indent(depth)}- {key}: '
+                              f'{to_string(value["old_value"], depth + 1)}')
+                result.append(f'{build_indent(depth)}+ {key}: '
+                              f'{to_string(value["new_value"], depth + 1)}')
+            case TYPES.UNCHANGED:
+                result.append(f'{build_indent(depth)}  {key}: '
+                              f'{to_string(value["value"], depth + 1)}')
+            case TYPES.NESTED:
+                result.append(f'{build_indent(depth)}  {key}: '
+                              f'{to_stylish(value["value"], depth + 1)}')
             case _:
                 raise ValueError(f'Unknown type: {value["type"]}')
 
-    result_string = '\n'.join(result)
-    return f'{{\n{result_string}\n{build_indent(indent - 2)}}}'
+    result_string = format_data(result, depth)
+    return create_braces(result_string)
