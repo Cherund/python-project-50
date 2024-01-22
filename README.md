@@ -65,13 +65,13 @@ options:
 
 [![asciicast](https://asciinema.org/a/631997.svg)](https://asciinema.org/a/631997)
 
-### Work example with PLain style
+### Comparison using Plain style
 
 `gendiff -f plain nested_file1.json nested_file2.json`
 
 [![asciicast](https://asciinema.org/a/631998.svg)](https://asciinema.org/a/631998)
 
-### Work example with Json style
+### Comparison using Json style
 
 `gendiff -f json filepath1.json filepath2.json`
 
